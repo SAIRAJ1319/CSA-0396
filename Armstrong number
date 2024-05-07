@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class ArmstrongNumbers {
+    static boolean isArmstrong(int num) {
+        int originalNum, remainder, result = 0, n = 0;
+        originalNum = num;
+        while (originalNum != 0) {
+            originalNum /= 10;
+            ++n;
+        }
+ originalNum = num;
+        while (originalNum != 0) {
+            remainder = originalNum % 10;
+            result += Math.pow(remainder, n);
+            originalNum /= 10;
+        }
+        return num == result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the value of N: ");
+        int n = scanner.nextInt();
+        scanner.close();
+
+        int count = 0;
+        int number = 0;
+
+        System.out.println("First " + n + " Armstrong numbers:");
+        while (count < n) {
+            if (isArmstrong(number)) {
+                System.out.print(number + " ");
+                count++;
+            }
+            number++;
+        }
+    }
