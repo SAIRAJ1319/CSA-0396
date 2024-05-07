@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+public class MatrixMultiplication {
+
+    static void multiplyMatrices(int[][] firstMatrix, int[][] secondMatrix, int[][] result) {
+        int rowsInFirst = firstMatrix.length;
+        int columnsInFirst = firstMatrix[0].length;
+        int columnsInSecond = secondMatrix[0].length;
+
+        for (int i = 0; i < rowsInFirst; i++) {
+            for (int j = 0; j < columnsInSecond; j++) {
+                for (int k = 0; k < columnsInFirst; k++) {
+                    result[i][j] += firstMatrix[i][k] * secondMatrix[k][j];
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of rows in the first matrix: ");
+        int rowsInFirst = scanner.nextInt();
+        System.out.print("Enter the number of columns in the first matrix: ");
+        int columnsInFirst = scanner.nextInt();
+
+        System.out.print("Enter the number of rows in the second matrix: ");
+        int rowsInSecond = scanner.nextInt();
+        System.out.print("Enter the number of columns in the second matrix: ");
+        int columnsInSecond = scanner.nextInt();
+
+        if (columnsInFirst != rowsInSecond) {
+            System.out.println("The number of columns in the first matrix should be equal to the number of rows in the second matrix.");
+        } else {
+            int[][] firstMatrix = new int[rowsInFirst][columnsInFirst];
+            int[][] secondMatrix = new int[rowsInSecond][columnsInSecond];
+            int[][] resultMatrix = new int[rowsInFirst][columnsInSecond];
+
+            System.out.println("Enter the elements of the first matrix:");
+            for (int i = 0; i < rowsInFirst; i++) {
+                for (int j = 0; j < columnsInFirst; j++) {
+                    firstMatrix[i][j] = scanner.nextInt();
+                }
+            }
+
+            System.out.println("Enter the elements of the second matrix:");
+            for (int i = 0; i < rowsInSecond; i++) {
+                for (int j = 0; j < columnsInSecond; j++) {
+                    secondMatrix[i][j] = scanner.nextInt();
+                }
+            }
+            multiplyMatrices(firstMatrix, secondMatrix, resultMatrix);
+            System.out.println("Result of matrix multiplication:");
+            for (int i = 0; i < rowsInFirst; i++) {
+                for (int j = 0; j < columnsInSecond; j++) {
+                    System.out.print(resultMatrix[i][j] + " ");
+                }
+                System.out.println();
+            }
+        }
+
+        scanner.close();
+    }
+}
