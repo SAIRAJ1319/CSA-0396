@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class DecimalToOctal {
+    static String decimalToOctal(int decimal) {
+        StringBuilder octal = new StringBuilder();
+        while (decimal != 0) {
+            int remainder = decimal % 8;
+            octal.insert(0, remainder); // Insert remainder at the beginning
+            decimal /= 8;
+        }
+        
+        return octal.toString();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a decimal number: ");
+        int decimal = scanner.nextInt();
+        scanner.close();
+        String octal = decimalToOctal(decimal);
+        System.out.println("Octal equivalent: " + octal);
+    }
+}
