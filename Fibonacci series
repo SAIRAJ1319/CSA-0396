@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class FibonacciSeries {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Prompt the user to enter the number of terms
+        System.out.print("Enter the number of terms for Fibonacci series: ");
+        int numberOfTerms = scanner.nextInt();
+        
+        // Generate and display the Fibonacci series
+        System.out.println("Fibonacci series up to " + numberOfTerms + " terms:");
+        for (int i = 0; i < numberOfTerms; i++) {
+            System.out.print(fibonacci(i) + " ");
+        }
+        
+        scanner.close();
+    }
+    
+    // Function to calculate the nth Fibonacci number recursively
+    public static int fibonacci(int n) {
+        if (n == 0)
+            return 0;
+        else if (n == 1)
+            return 1;
+        else
+            return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+}
